@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Page Summary",
+  "version": "1.0",
+  "description": "要約ツール",
+  
+  "icons": {
+    "128": "icon.png" 
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  
+  "permissions": ["activeTab", "scripting"]
+}

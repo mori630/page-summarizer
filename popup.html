@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      transition: all 0.2s ease;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    /* クリックした時の「凹む」動き */
+    button:active {
+      transform: scale(0.96); /* 凹んだように見せる */
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+    }
+
+    /* 【追加】ローディング用のクルクル */
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(52, 152, 219, 0.2);
+      border-top: 3px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #statusText {
+      text-align: center;
+      font-size: 13px;
+      color: #7f8c8d;
+      margin-bottom: 10px;
+      display: none; /* 最初は隠しておく */
+    }
+
+    body { width: 400px; padding: 20px; font-family: 'Segoe UI', Meiryo, sans-serif; background-color: #f4f7f9; margin: 0; }
+    h2 { font-size: 20px; color: #34495e; text-align: center; margin-bottom: 20px; }
+    #resultArea { background: white; border-radius: 12px; padding: 20px; min-height: 120px; max-height: 450px; overflow-y: auto; line-height: 1.8; font-size: 14px; color: #444; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    ul { margin: 0; padding-left: 1.2em; }
+    li { margin-bottom: 12px; list-style-type: none; position: relative; }
+    li::before { content: "•"; color: #3498db; font-weight: bold; position: absolute; left: -1em; }
+  </style>
+</head>
+<body>
+  <h2>Page Summary</h2>
+  <button id="extractBtn">内容を取得・要約</button>
+  
+  <div id="loadingArea" style="display: none;">
+    <div class="spinner"></div>
+    <div id="statusText">要約中...</div>
+  </div>
+
+  <div id="resultArea">ここに要約が表示されます</div>
+  <script src="popup.js"></script>
+</body>
+</html>
